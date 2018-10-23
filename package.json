@@ -1,0 +1,8 @@
+{
+  "name": "Yourchestra",
+  "version": "0.1",
+  "description": "Conduct music with your body & a browser.",
+  "main": "index.js",
+  "author": "Rupert Parry",
+  "license": "MIT"
+}
