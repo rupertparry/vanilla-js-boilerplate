@@ -1,4 +1,4 @@
-# Vanilla Pie
+# 🥧 Vanilla Pie
 > A starting point for a vanilla JS web application, with server/client-side handlebars templating, bundling, ES6 & PostCSS.
 
 ## Why?
