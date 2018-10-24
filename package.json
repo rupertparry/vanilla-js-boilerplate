@@ -1,8 +1,8 @@
 {
-  "name": "Yourchestra",
+  "name": "vanilla-pie",
   "version": "0.1.0",
-  "description": "Conduct music with your body & a browser.",
-  "main": "src/index.js",
+  "description": "A great boilerplate for javascript apps, with bundling, handlebars on the server & client, ES6 and PostCSS",
+  "main": "src/index.html",
   "author": "Rupert Parry",
   "license": "MIT",
   "scripts": {

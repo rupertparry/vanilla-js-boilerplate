@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/10.9.0/bin/node /usr/local/bin/yarn add chockidar-cli
+  /usr/local/Cellar/node/10.9.0/bin/node /usr/local/bin/yarn run start
 
 PATH: 
   /Users/rupertp/Library/Android/sdk/platform-tools:/Users/rupertp/Library/Android/sdk/tools:/usr/local/git/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/usr/local/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
@@ -15,21 +15,19 @@ Platform:
 
 npm manifest: 
   {
-    "name": "Yourchestra",
+    "name": "Vanilla Pie",
     "version": "0.1.0",
-    "description": "Conduct music with your body & a browser.",
-    "main": "src/index.js",
+    "description": "A great boilerplate for javascript apps, with bundling, handlebars on the server & client, ES6 and PostCSS",
+    "main": "src/index.html",
     "author": "Rupert Parry",
     "license": "MIT",
-    "watch": {
-      "precompile": "src/index.html"
-    },
     "scripts": {
-      "watch": "npm-watch",
+      "precompile-watch": "chokidar 'src/index.hbs' -c 'yarn run precompile'",
       "precompile": "hbs src/index.hbs --partial src/partials/* --output src/",
-      "start": "concurrently 'watch' 'parcel src/index.html'"
+      "start": "concurrently 'yarn run precompile-watch' 'parcel src/index.html'"
     },
     "devDependencies": {
+      "chokidar-cli": "^1.2.1",
       "concurrently": "^4.0.1",
       "hbs-cli": "^1.2.0",
       "parcel-bundler": "^1.6.1",
@@ -900,6 +898,10 @@ Lockfile:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
   
+  bluebird@3.5.1:
+    version "3.5.1"
+    resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+  
   bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
     version "4.11.8"
     resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
@@ -1105,7 +1107,16 @@ Lockfile:
       escape-string-regexp "^1.0.5"
       supports-color "^5.3.0"
   
-  chokidar@^2.0.3:
+  chokidar-cli@^1.2.1:
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/chokidar-cli/-/chokidar-cli-1.2.1.tgz#50574a63414174c5ac62f495abe09ae3cb6cb8b5"
+    dependencies:
+      bluebird "3.5.1"
+      chokidar "2.0.4"
+      lodash "4.17.10"
+      yargs "12.0.1"
+  
+  chokidar@2.0.4, chokidar@^2.0.3:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
     dependencies:
@@ -1378,6 +1389,14 @@ Lockfile:
       ripemd160 "^2.0.0"
       safe-buffer "^5.0.1"
       sha.js "^2.4.8"
+  
+  cross-spawn@^5.0.1:
+    version "5.1.0"
+    resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
+    dependencies:
+      lru-cache "^4.0.1"
+      shebang-command "^1.2.0"
+      which "^1.2.9"
   
   cross-spawn@^6.0.0, cross-spawn@^6.0.4:
     version "6.0.5"
@@ -1899,6 +1918,18 @@ Lockfile:
       signal-exit "^3.0.0"
       strip-eof "^1.0.0"
   
+  execa@^0.7.0:
+    version "0.7.0"
+    resolved "https://registry.yarnpkg.com/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
+    dependencies:
+      cross-spawn "^5.0.1"
+      get-stream "^3.0.0"
+      is-stream "^1.1.0"
+      npm-run-path "^2.0.0"
+      p-finally "^1.0.0"
+      signal-exit "^3.0.0"
+      strip-eof "^1.0.0"
+  
   expand-brackets@^2.1.4:
     version "2.1.4"
     resolved "https://registry.yarnpkg.com/expand-brackets/-/expand-brackets-2.1.4.tgz#b77735e315ce30f6b6eff0f83b04151a22449622"
@@ -2315,6 +2346,10 @@ Lockfile:
     dependencies:
       loose-envify "^1.0.0"
   
+  invert-kv@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+  
   invert-kv@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
@@ -2613,6 +2648,12 @@ Lockfile:
     version "6.0.2"
     resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   
+  lcid@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
+    dependencies:
+      invert-kv "^1.0.0"
+  
   lcid@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
@@ -2747,6 +2788,10 @@ Lockfile:
     version "4.5.0"
     resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   
+  lodash@4.17.10:
+    version "4.17.10"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+  
   lodash@^4.17.10, lodash@^4.17.4, lodash@^4.2.0:
     version "4.17.11"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
@@ -2763,7 +2808,7 @@ Lockfile:
     dependencies:
       js-tokens "^3.0.0 || ^4.0.0"
   
-  lru-cache@^4.1.3:
+  lru-cache@^4.0.1, lru-cache@^4.1.3:
     version "4.1.3"
     resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
     dependencies:
@@ -2807,6 +2852,12 @@ Lockfile:
   mdn-data@~1.1.0:
     version "1.1.4"
     resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-1.1.4.tgz#50b5d4ffc4575276573c4eedb8780812a8419f01"
+  
+  mem@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/mem/-/mem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
+    dependencies:
+      mimic-fn "^1.0.0"
   
   mem@^4.0.0:
     version "4.0.0"
@@ -3191,6 +3242,14 @@ Lockfile:
   os-homedir@^1.0.0:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
+  
+  os-locale@^2.0.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/os-locale/-/os-locale-2.1.0.tgz#42bc2900a6b5b8bd17376c8e882b65afccf24bf2"
+    dependencies:
+      execa "^0.7.0"
+      lcid "^1.0.0"
+      mem "^1.1.0"
   
   os-locale@^3.0.0:
     version "3.0.1"
@@ -4916,6 +4975,23 @@ Lockfile:
     dependencies:
       camelcase "^4.1.0"
   
+  yargs@12.0.1:
+    version "12.0.1"
+    resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.1.tgz#6432e56123bb4e7c3562115401e98374060261c2"
+    dependencies:
+      cliui "^4.0.0"
+      decamelize "^2.0.0"
+      find-up "^3.0.0"
+      get-caller-file "^1.0.1"
+      os-locale "^2.0.0"
+      require-directory "^2.1.1"
+      require-main-filename "^1.0.1"
+      set-blocking "^2.0.0"
+      string-width "^2.0.0"
+      which-module "^2.0.0"
+      y18n "^3.2.1 || ^4.0.0"
+      yargs-parser "^10.1.0"
+  
   yargs@^12.0.1:
     version "12.0.2"
     resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.2.tgz#fe58234369392af33ecbef53819171eff0f5aadc"
@@ -4934,14 +5010,10 @@ Lockfile:
       yargs-parser "^10.1.0"
 
 Trace: 
-  Error: https://registry.yarnpkg.com/chockidar-cli: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:65019:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:132430:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:133413:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:133333:12)
-      at Object.onceWrapper (events.js:273:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1085:12)
-      at process._tickCallback (internal/process/next_tick.js:63:19)
+  Error: package.json: Name contains illegal characters
+      at new MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at module.exports.exports.default (/usr/local/lib/node_modules/yarn/lib/cli.js:37549:13)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:52434:51
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
