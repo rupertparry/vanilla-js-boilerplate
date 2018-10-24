@@ -26,5 +26,5 @@ If you want multiple pages, either get a front-end router happening (simple to D
 
 ## Still to do
 
-[ ] Implement a build stage for final dev build
-[ ] Probably put some new stuff in that I'll notice as I actually start using this
+- [ ] Implement a build stage for final dev build
+- [ ] Probably put some new stuff in that I'll notice as I actually start using this
