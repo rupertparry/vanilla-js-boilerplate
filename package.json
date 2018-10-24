@@ -1,11 +1,20 @@
 {
   "name": "Yourchestra",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Conduct music with your body & a browser.",
   "main": "src/index.js",
   "author": "Rupert Parry",
   "license": "MIT",
+  "scripts": {
+    "precompile-watch": "chokidar 'src/index.hbs' -c 'yarn run precompile'",
+    "precompile": "hbs src/index.hbs --partial src/partials/* --output src/",
+    "start": "concurrently 'yarn run precompile-watch' 'parcel src/index.html'"
+  },
   "devDependencies": {
-    "parcel-bundler": "^1.6.1"
+    "chokidar-cli": "^1.2.1",
+    "concurrently": "^4.0.1",
+    "hbs-cli": "^1.2.0",
+    "parcel-bundler": "^1.6.1",
+    "parcel-plugin-handlebars-precompile": "^1.0.0"
   }
 }
