@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "precompile-watch": "chokidar 'src/index.hbs' -c 'yarn run precompile'",
-    "precompile": "hbs src/index.hbs --partial src/partials/* --output src/",
+    "precompile": "hbs src/index.hbs --partial 'src/partials/*' --output src/",
     "start": "concurrently 'yarn run precompile-watch' 'parcel src/index.html'"
   },
   "devDependencies": {
